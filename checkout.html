@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bag & Checkout — MONOCHROME (demo)</title><meta name="description" content="Review your bag and check out (demo — no real payments)."><meta property="og:title" content="Bag & Checkout — MONOCHROME (demo)"><meta property="og:description" content="Review your bag and check out (demo — no real payments)."><meta property="og:image" content="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&q=75"><meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22black%22/><path d=%22M50 5a45 45 0 0 1 0 90z%22 fill=%22white%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body data-page="checkout"><main id="main"><div class="ph"><h1>Checkout</h1></div>
+<div class="co"><form id="co" class="f" novalidate><h2>Your details</h2>
+<div class="f2"><div><label for="fname">Full name</label><input id="fname" name="fname" autocomplete="name"><div class="err" data-e="fname"></div></div><div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"><div class="err" data-e="email"></div></div></div>
+<div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="+960 7XX XXXX" autocomplete="tel"><div class="err" data-e="phone"></div></div>
+<h2 style="margin-top:1.5rem">Delivery</h2>
+<div><label for="address">Address</label><input id="address" name="address" autocomplete="street-address"><div class="err" data-e="address"></div></div>
+<div class="f2"><div><label for="island">Island / City</label><input id="island" name="island" placeholder="Malé"><div class="err" data-e="island"></div></div><div><label for="note">Delivery note (optional)</label><input id="note" name="note"></div></div>
+<h2 style="margin-top:1.5rem">Payment</h2><div class="pay">
+<label><input type="radio" name="pay" value="Cash on delivery"> Cash on delivery</label>
+<label><input type="radio" name="pay" value="Bank transfer (details sent on WhatsApp)"> Bank transfer — details sent on WhatsApp</label>
+<label><input type="radio" name="pay" value="Card (not available in demo)" disabled> Card payment — <em>not connected in this demo</em></label></div><div class="err" data-e="pay"></div>
+<button class="pill dark add" type="submit">Place demo order</button>
+<p class="demo-note"><b>Demo store:</b> no payment is taken and no order is saved. After placing, you can send the order to the boutique on WhatsApp.</p></form>
+<aside class="sum"><h2>Order summary</h2><div id="sumitems"></div>
+<div style="margin-top:1rem;display:grid;gap:.4rem;font-size:.9rem"><div class="tot" style="margin:0;font-size:.9rem"><span>Subtotal</span><span id="sst"></span></div><div class="tot" style="margin:0;font-size:.9rem"><span>Delivery (demo)</span><span id="ssh"></span></div><div class="tot" style="font-size:1.2rem;border-top:1px solid var(--line);padding-top:.6rem"><span>Total</span><span id="stt"></span></div></div></aside></div></main><script src="data.js"></script><script src="app.js"></script></body></html>
