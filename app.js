@@ -6,8 +6,8 @@ const byId=id=>PRODUCTS.find(p=>p.id===id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 /* ---------- cart (localStorage) ---------- */
 const Cart={
-  get(){try{return JSON.parse(localStorage.getItem("mono_cart"))||[]}catch{return[]}},
-  set(c){localStorage.setItem("mono_cart",JSON.stringify(c));renderCart()},
+  get(){try{return JSON.parse(localStorage.getItem("stylme_cart"))||[]}catch{return[]}},
+  set(c){localStorage.setItem("stylme_cart",JSON.stringify(c));renderCart()},
   add(id,size,color,qty){const c=this.get();const k=`${id}|${size}|${color}`;const f=c.find(i=>i.k===k);f?f.qty+=qty:c.push({k,id,size,color,qty});this.set(c)},
   qty(k,d){const c=this.get();const f=c.find(i=>i.k===k);if(!f)return;f.qty=Math.max(1,Math.min(10,f.qty+d));this.set(c)},
   rm(k){this.set(this.get().filter(i=>i.k!==k))},
@@ -17,10 +17,10 @@ const Cart={
 /* ---------- shell ---------- */
 function shell(){
   const page=document.body.dataset.page;
-  const ann="Free island delivery over MVR 1,500 (demo) ✦ Demo store — no real payments ✦ New season: SS27 Monochrome ✦ ";
-  document.body.insertAdjacentHTML("afterbegin",`<div class="pt"><span>Mono</span></div><div class="cur"></div>
+  const ann="Free island delivery over MVR 1,500 (demo) ✦ Demo store — no real payments ✦ New season: SS27 STYLME ✦ ";
+  document.body.insertAdjacentHTML("afterbegin",`<div class="pt"><span>STYLME</span></div><div class="cur"></div>
 <div class="ann"><div>${ann.repeat(6)}</div></div>
-<header><a class="logo" href="index.html">Monochrome®</a>
+<header><a class="logo" href="index.html">STYLME®</a>
 <nav><a href="shop.html" class="${page==="shop"?"on":""}">Shop</a><a href="shop.html?c=men">Men</a><a href="shop.html?c=women">Women</a><a href="shop.html?c=accessories">Accessories</a><a href="shop.html?c=sale">Sale</a></nav>
 <div class="hd-r"><button class="mnav-btn">Menu</button><button class="bag-btn" data-cursor="Bag">Bag<b>0</b></button></div></header>
 <div class="mnav"><button>Close</button><a href="index.html">Home</a><a href="shop.html">Shop all</a><a href="shop.html?c=men">Men</a><a href="shop.html?c=women">Women</a><a href="shop.html?c=accessories">Accessories</a><a href="shop.html?c=sale">Sale</a></div>`);
@@ -29,13 +29,13 @@ function shell(){
 <div><h4>Help</h4><ul><li><a href="checkout.html">Bag &amp; checkout</a></li><li><a class="wa" href="#" target="_blank" rel="noopener">WhatsApp us</a></li><li><a href="mailto:hello@example.com">hello@example.com (demo)</a></li></ul></div>
 <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li></ul></div>
 <div><h4>Studio (demo)</h4><ul><li>Sample Street, Malé</li><li>Maldives</li><li><button class="secret" data-lookbook>psst… press L</button></li></ul></div></div>
-<div class="huge">Monochrome</div>
-<div class="legal"><span>© <span class="yr"></span> Monochrome — fictional demo brand</span><span>Photos: Unsplash · Site by Malaak</span></div></footer>
+<div class="huge">STYLME</div>
+<div class="legal"><span>© <span class="yr"></span> STYLME — fictional demo brand</span><span>Photos: Unsplash · Site by Malaak</span></div></footer>
 <div class="scrim"></div><aside class="drawer" aria-label="Shopping bag"><div class="dh"><h3>Your bag</h3><button class="x">Close</button></div><div class="items"></div><div class="df"><div class="tot"><span>Subtotal</span><span class="st">MVR 0</span></div><a class="pill dark" href="checkout.html">Checkout →</a></div></aside>
 <div class="lb" role="dialog" aria-label="Lookbook"><div class="lb-top"><span>Lookbook mode — SS27</span><button class="lbx">Exit ✕</button></div><div class="lb-stage">${LOOKBOOK.map((p,i)=>`<img src="${I(p,1100)}" alt="Lookbook ${i+1}" loading="lazy">`).join("")}<div class="lb-word">Look 01</div></div><div class="lb-nav"><button class="lbp">← Prev</button><span class="lbn">1 / ${LOOKBOOK.length}</span><button class="lbnx">Next →</button></div></div>
 <div class="toast"></div>`);
   $$(".yr").forEach(e=>e.textContent=new Date().getFullYear());
-  $$(".wa").forEach(a=>a.href=`https://wa.me/${WA}?text=${encodeURIComponent("Hi Monochrome, I have a question about an order.")}`);
+  $$(".wa").forEach(a=>a.href=`https://wa.me/${WA}?text=${encodeURIComponent("Hi STYLME, I have a question about an order.")}`);
   $(".mnav-btn").onclick=()=>$(".mnav").classList.add("open");
   $(".mnav button").onclick=()=>$(".mnav").classList.remove("open");
   $(".bag-btn").onclick=openCart;$(".scrim").onclick=closeCart;$(".x").onclick=closeCart;
@@ -72,7 +72,7 @@ function fx(){
   document.addEventListener("click",e=>{const a=e.target.closest("a");if(!a||a.target||e.metaKey||e.ctrlKey)return;const h=a.getAttribute("href");if(!h||h.startsWith("#")||h.startsWith("http")||h.startsWith("mailto")||h.startsWith("tel"))return;
     e.preventDefault();pt.classList.add("enter");pt.classList.remove("gone");void pt.offsetWidth;pt.classList.remove("enter");setTimeout(()=>location.href=h,650)});
 }
-/* ---------- lookbook easter egg: press L, or type "mono", or tap the footer link ---------- */
+/* ---------- lookbook easter egg: press L, or type "stylme", or tap the footer link ---------- */
 let lbi=0;
 function lbShow(i){const im=$$(".lb-stage img");lbi=(i+im.length)%im.length;im.forEach((m,j)=>m.classList.toggle("on",j===lbi));$(".lb-word").textContent="Look "+String(lbi+1).padStart(2,"0");$(".lbn").textContent=`${lbi+1} / ${im.length}`}
 function openLB(){$(".lb").classList.add("open");lbShow(0);toast("✦ You found Lookbook mode");}
@@ -80,7 +80,7 @@ function closeLB(){$(".lb")&&$(".lb").classList.remove("open")}
 function lbInit(){$(".lbx").onclick=closeLB;$(".lbp").onclick=()=>lbShow(lbi-1);$(".lbnx").onclick=()=>lbShow(lbi+1);
   let typed="";document.addEventListener("keydown",e=>{if(/input|textarea|select/i.test(e.target.tagName))return;
     if($(".lb.open")){if(e.key==="ArrowRight")lbShow(lbi+1);if(e.key==="ArrowLeft")lbShow(lbi-1);return}
-    if(e.key.toLowerCase()==="l")openLB();typed=(typed+e.key).slice(-4).toLowerCase();if(typed==="mono")openLB()});
+    if(e.key.toLowerCase()==="l")openLB();typed=(typed+e.key).slice(-6).toLowerCase();if(typed==="stylme")openLB()});
   let sx=0;$(".lb-stage").addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});$(".lb-stage").addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40)lbShow(lbi+(d<0?1:-1))});
   $(".lb-stage").addEventListener("click",()=>lbShow(lbi+1));}
 /* ---------- product cards ---------- */
@@ -101,7 +101,7 @@ const pages={
    $("#cnt").textContent=`${list.length} piece${list.length===1?"":"s"}`;$("#t").textContent={all:"Shop",men:"Men",women:"Women",accessories:"Accs.",new:"New in",sale:"Sale"}[cat]||"Shop";
    history.replaceState(null,"",`?c=${cat}${q?`&q=${encodeURIComponent(q)}`:""}`);observe()};
   $$(".chip").forEach(c=>c.onclick=()=>{cat=c.dataset.c;draw()});inp.oninput=()=>{q=inp.value;draw()};draw()},
- product(){const p=byId(new URLSearchParams(location.search).get("id"))||PRODUCTS[0];document.title=`${p.name} — Monochrome (demo)`;
+ product(){const p=byId(new URLSearchParams(location.search).get("id"))||PRODUCTS[0];document.title=`${p.name} — STYLME (demo)`;
   let size="",color=p.colors.length===1?p.colors[0]:"",qty=1;
   $("#pd").innerHTML=`<div class="gal"><div class="main"><img id="mi" src="${I(p.imgs[0],1200)}" alt="${esc(p.name)}"></div><div class="thumbs">${p.imgs.map((m,i)=>`<button class="${i?"":"on"}" data-i="${i}" aria-label="Image ${i+1}"><img src="${I(m,200)}" alt=""></button>`).join("")}</div></div>
   <div class="info"><p class="cat" style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g)">${p.cat} · demo product</p><h1>${esc(p.name)}</h1><p class="price">${p.was?`<s>${money(p.was)}</s>`:""}${money(p.price)}</p><p>${esc(p.desc)}</p>
@@ -127,7 +127,7 @@ const pages={
    if(!ok){const b=f.querySelector(".bad");b&&b.scrollIntoView({behavior:"smooth",block:"center"});return}
    const ref="MC-"+Date.now().toString(36).toUpperCase().slice(-6);
    const lines=items.map(i=>`• ${byId(i.id).name} (${i.size}, ${i.color}) x${i.qty} — ${money(byId(i.id).price*i.qty)}`).join("\n");
-   const msg=`New order ${ref} — Monochrome\n${lines}\nSubtotal: ${money(Cart.total())} (delivery fee confirmed on WhatsApp)\nName: ${f.fname.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\nAddress: ${f.address.value}, ${f.island.value}\nPayment: ${pay.value}`;
+   const msg=`New order ${ref} — STYLME\n${lines}\nSubtotal: ${money(Cart.total())} (delivery fee confirmed on WhatsApp)\nName: ${f.fname.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\nAddress: ${f.address.value}, ${f.island.value}\nPayment: ${pay.value}`;
    const total=money(Cart.total());
    $("#main").innerHTML=`<div class="done"><p class="lbl" style="color:var(--g)">Demo order — no payment taken</p><h1 class="rv">Thank<br><span class="serif">you,</span> ${esc(f.fname.value.split(" ")[0])}</h1><p class="ref">Reference ${ref} · ${total}</p>
     <p style="max-width:520px;margin:0 auto 2rem">This is a demonstration store: nothing was charged and the order is not stored. To place it for real, send it to the boutique on WhatsApp.</p>
