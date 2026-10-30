@@ -1,10 +1,10 @@
-# STYLME — demo fashion boutique
+# MONOCHROME — demo fashion boutique
 Static HTML/CSS/JS demo by Malaak. **All products, prices, contacts and the brand are fictional demo content.**
 
 Files: `index.html` (home), `shop.html` (search + filters), `product.html?id=…`, `checkout.html` (bag + checkout), `data.js` (products — edit here), `app.js` (cart, UI, effects), `style.css`.
 - WhatsApp number: change `WA` at the top of `app.js`.
 - Cart is saved in the browser's localStorage. Orders are **not** stored or charged; the confirmation offers a WhatsApp message with the order.
-- Easter egg: press **L** (or type "stylme", or tap "psst" in the footer) for Lookbook mode.
+- Easter egg: press **L** (or type "mono", or tap "psst" in the footer) for Lookbook mode.
 
 ## Going live with real payments
 1. **Pick a gateway.** Maldives: BML Connect (Bank of Maldives) or MIB payment gateway; international: Stripe or PayPal. Never take card numbers in your own form.
